@@ -73,7 +73,7 @@ class KaryawanController extends Controller
         } else {
             $avatar = $oldAvatar;
         }
-        $password = Hash::make($request->password);
+        $password = $request->password;
 
         if (!empty($password)) {
             $data = [
@@ -94,6 +94,7 @@ class KaryawanController extends Controller
                 'department_id' => $request->department_id,
                 'cabang_id' => $request->cabang_id,
                 'no_telp' => $request->no_telp,
+                'password' => $password,
                 'avatar' => $avatar,
             ];
         }

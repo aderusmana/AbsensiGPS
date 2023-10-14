@@ -25,7 +25,10 @@
         <td>{{ $absen->nik }}</td>
         <td>{{ $absen->nama_lengkap }}</td>
         <td>{{ $absen->nama_department }}</td>
-        <td>{{ $absen->nama_jamKerja }} <br> ( {{ $absen->akhir_jamMasuk }} - {{ $absen->set_jamPulang }})</td>
+        <td><small>
+                {{ $absen->nama_jamKerja }} <br> ( {{ $absen->akhir_jamMasuk }} - {{ $absen->set_jamPulang }})
+            </small>
+        </td>
         <td>
             <span class="badge badge-outline text-blue text-center">{{ $absen->akhir_jamMasuk }}</span>
         </td>

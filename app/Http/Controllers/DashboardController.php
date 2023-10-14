@@ -23,6 +23,7 @@ class DashboardController extends Controller
 
         $absensiBulanIni = Absensi::whereRaw('MONTH(tgl_absensi)="' . $bulanIni . '"')
             ->where('karyawan_id', $karyawanId)
+            ->join('jams', 'absensis.jam_id', '=', 'jams.id')
             ->whereRaw('YEAR(tgl_absensi)="' . $tahunIni . '"')->orderBy('tgl_absensi')->get();
 
         $rekapAbsensi = Absensi::selectRaw('COUNT(karyawan_id) as jmlHadir,

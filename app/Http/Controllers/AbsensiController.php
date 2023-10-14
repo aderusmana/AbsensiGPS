@@ -168,12 +168,13 @@ class AbsensiController extends Controller
 
     public function update(Request $request)
     {
+
         $karyawan = Auth::guard('karyawan')->user();
         $karyawanId = $karyawan->id;
         $nik = $karyawan->nik;
         $namaLengkap = $request->nama_lengkap;
         $noTelp = $request->no_telp;
-        $password = $request->password ? Hash::make($request->password) : null;
+        $password = $request->password ? Hash::make($request->password) : $karyawan->password;
         $avatar = $request->hasFile('avatar') ? $nik . "." . $request->file('avatar')->getClientOriginalExtension() : $karyawan->avatar;
 
         $data = [

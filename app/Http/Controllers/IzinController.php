@@ -25,7 +25,7 @@ class IzinController extends Controller
         $status  = $request->status;
         $keterangan = $request->keterangan;
         if ($request->hasFile('foto')) {
-            $foto = $nik . "." . $request->file('foto')->getClientOriginalExtension();
+            $foto = $nik . "." . $tglIzin . $request->file('foto')->getClientOriginalExtension();
         } else {
             $foto = null;
         }
@@ -65,7 +65,7 @@ class IzinController extends Controller
         if ($request->status_approved == "0" || $request->status_approved == "1" || $request->status_approved == "2") {
             $is->where('status_approved', $request->status_approved);
         }
-        $izinsakit = $is->orderBy('tgl_izin', 'desc')->paginate(1);
+        $izinsakit = $is->orderBy('tgl_izin', 'desc')->paginate(5);
         $izinsakit->appends($request->all());
 
 

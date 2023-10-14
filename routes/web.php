@@ -102,4 +102,9 @@ Route::middleware('auth:user')->group(function () {
 
     Route::post('/admin/jamKerja/{id}/setJamById', [JamsByIdController::class, 'setJamById']);
     Route::put('/admin/jamKerja/{id}/updateJamById', [JamsByIdController::class, 'updateJamById']);
+
+    Route::get('/admin/users' ,[UserController::class, 'create'])->name('admin.users');
+    Route::post('/admin/users/',[UserController::class, 'store'])->name('admin.store');
+    Route::put('/admin/users/update/{id}',[UserController::class, 'update'])->name('admin.update');
+    Route::delete('/admin/users/{id}',[UserController::class, 'destroy'])->name('admin.delete');
 });

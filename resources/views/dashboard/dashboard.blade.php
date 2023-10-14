@@ -204,7 +204,14 @@
                                             aria-label="image outline"></ion-icon>
                                     </div>
                                     <div class="in">
-                                        <div>{{ date('d-m-Y', strtotime($bln->tgl_absensi)) }}</div>
+                                        <div>
+                                            <small>
+                                                {{ date('d-m-Y', strtotime($bln->tgl_absensi)) }}
+                                            </small><br>
+                                            <small>
+                                                {{ $bln->nama_jamKerja }}
+                                            </small>
+                                        </div>
                                         <span class="badge badge-warning">{{ $bln->jam_masuk }}</span>
                                         <span
                                             class="badge badge-danger">{{ $absensiHariIni != null && $bln->jam_keluar != null ? $bln->jam_keluar : 'Belum Absen' }}</span>
