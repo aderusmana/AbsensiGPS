@@ -15,10 +15,8 @@ return new class extends Migration
     {
         Schema::create('jams_by_ids', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('karyawan_id');
-            $table->foreign('karyawan_id')->references('id')->on('karyawans');
-            $table->unsignedBigInteger('jam_id');
-            $table->foreign('jam_id')->references('id')->on('jams');
+            $table->foreignId('karyawan_id')->constrained('absensis');
+            $table->foreignId('jam_id')->constrained('jams');
             $table->string('hari', 10);
             $table->timestamps();
         });

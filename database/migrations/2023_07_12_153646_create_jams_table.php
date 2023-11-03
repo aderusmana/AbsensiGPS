@@ -18,9 +18,9 @@ return new class extends Migration
             $table->string('kode_jamKerja', 4);
             $table->string('nama_jamKerja', 50);
             $table->time('awal_jamMasuk');
-            $table->time('jam_masuk');
+            $table->time('set_jamMasuk');
             $table->time('akhir_jamMasuk');
-            $table->time('jam_pulang');
+            $table->time('set_jamPulang');
             $table->timestamps();
         });
     }

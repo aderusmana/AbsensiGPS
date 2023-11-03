@@ -15,8 +15,7 @@ return new class extends Migration
     {
         Schema::create('absensis', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('karyawan_id');
-            $table->foreign('karyawan_id')->references('id')->on('karyawans');
+            $table->foreignId('karyawan_id')->constrained('karyawans');
             $table->date('tgl_absensi')->nullable();
             $table->time('jam_masuk')->nullable();
             $table->time('jam_keluar')->nullable();
