@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('jams_by_ids', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('karyawan_id')->constrained('absensis');
+            $table->foreignId('karyawan_id')->constrained('karyawans');
             $table->foreignId('jam_id')->constrained('jams');
             $table->string('hari', 10);
             $table->timestamps();
