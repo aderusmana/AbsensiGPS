@@ -1,10 +1,5 @@
 ///////////////////////////////////////////////////////////////////////////
-// Service Workers
-if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('service-worker.js')
-        .then(reg => console.log('service worker registered'))
-        .catch(err => console.log('service worker not registered - there is an error.', err));
-}
+
 ///////////////////////////////////////////////////////////////////////////
 
 
@@ -150,7 +145,7 @@ $("body").on("click", ".stepper-up", function () {
 $("body").on("click", ".stepper-down", function () {
     var valueInput = $(this).parent(".stepper").children(".form-control");
     if (parseInt(valueInput.val()) < 1) {
-        
+
     }
     else{
         valueInput.val(parseInt(valueInput.val()) - 1);

@@ -3,7 +3,7 @@
 @section('header')
     <div class="appHeader bg-primary text-light">
         <div class="left">
-            <a href="javascript:;" class="headerButton goBack">
+            <a href="javascript:;" class="headerButton goBack" onclick="window.history.back()">
                 <ion-icon name="chevron-back-outline"></ion-icon>
             </a>
         </div>
@@ -73,7 +73,8 @@
     <div class="row">
         @if ($cek > 0)
             <div class="col mt-2">
-                <button id="takeAbsen" class="btn btn-danger btn-block">
+                <button id="takeAbsen" class="btn btn-danger btn-block"
+                    {{ $absensiHariIni !== null && $absensiHariIni->jam_keluar === null ? '' : 'disabled' }}>
                     <ion-icon name="camera"></ion-icon> Absen Pulang
                 </button>
             </div>
@@ -195,9 +196,9 @@
         })
     </script>
     <script type="text/javascript">
-        window.onload = function() {
+        window.addEventListener('DOMContentLoaded', (event) => {
             jam();
-        }
+        });
 
         function jam() {
             var e = document.getElementById('jam'),
@@ -207,9 +208,11 @@
             m = set(d.getMinutes());
             s = set(d.getSeconds());
 
-            e.innerHTML = h + ':' + m + ':' + s;
+            if (e) {
+                e.innerHTML = h + ':' + m + ':' + s;
+            }
 
-            setTimeout('jam()', 1000);
+            setTimeout(jam, 1000);
         }
 
         function set(e) {
@@ -217,4 +220,5 @@
             return e;
         }
     </script>
+
 @endpush

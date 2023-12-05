@@ -81,8 +81,6 @@ Route::middleware('auth:user')->group(function () {
     Route::post('/admin/cetakLaporan', [AbsensiController::class, 'cetakLaporan']);
     Route::post('/admin/cetakRekap', [AbsensiController::class, 'cetakRekap']);
 
-    Route::get('/admin/lokasi', [LokasiController::class, 'setLokasi']);
-    Route::post('/admin/updateLokasiKantor', [LokasiController::class, 'updateLokasiKantor']);
 
     Route::get('/admin/dataIzinSakit', [IzinController::class, 'dataIzinSakit']);
     Route::put('/admin/izinSakit/{id}/update', [IzinController::class, 'updateIzinSakit']);

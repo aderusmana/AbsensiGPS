@@ -41,7 +41,7 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>Hari>
+                                    <th>Hari
                                     </th>
                                     <th>Jam Kerja</th>
                                 </tr>
@@ -49,15 +49,16 @@
                             <tbody>
                                 @foreach ($updateJamKerja as $upjam)
                                     <tr>
-                                        <td>{{ $upjam->hari }} <input type="hidden" name="hari[]"
+                                        <td>{{ $upjam->hari }}
+                                            <input type="hidden" name="hari[]"
                                                 value="{{ $upjam->hari }}"></td>
                                         <td>
-                                            <select name="kode_jamKerja[]" id="kode_jamKerja" class="form-select">
+                                            <select name="jam_id[]" id="jam_id" class="form-select">
                                                 <option value="">Pilih Jam Kerja</option>
                                                 @foreach ($jam as $jm)
                                                     <option
-                                                        {{ $jm->kode_jamKerja == $upjam->kode_jamKerja ? 'selected' : '' }}
-                                                        value="{{ $jm->kode_jamKerja }}">
+                                                        {{ $jm->id == $upjam->jam_id ? 'selected' : '' }}
+                                                        value="{{ $jm->id }}">
                                                         {{ $jm->nama_jamKerja }}</option>
                                                 @endforeach
                                             </select>

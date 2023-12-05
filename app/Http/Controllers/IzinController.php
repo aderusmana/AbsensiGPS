@@ -36,6 +36,7 @@ class IzinController extends Controller
             'tgl_izin' => $tglIzin,
             'status' => $status,
             'keterangan' => $keterangan,
+            'status_approved'=> "0",
             'foto' => $foto,
         ];
         $simpan = Izin::create($data);

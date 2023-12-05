@@ -55,7 +55,9 @@ class AbsensiController extends Controller
     public function create()
     {
         $hariIni = date('Y-m-d');
+        $karyawanId = Auth::guard('karyawan')->user()->id;
         $karyawan = Auth::guard('karyawan')->user();
+        $absensiHariIni = Absensi::where('karyawan_id', $karyawanId)->where('tgl_absensi', $hariIni)->first();
         $cek = Absensi::where('tgl_absensi', $hariIni)->where('karyawan_id', $karyawan->id)->count();
         $lokasi = Cabang::find($karyawan->cabang_id);
         $jamKerja = JamsById::where('karyawan_id', $karyawan->id)
@@ -63,7 +65,7 @@ class AbsensiController extends Controller
             ->where('hari', $this->getHari())
             ->first();
 
-        return view('absensi.create', compact('cek', 'lokasi', 'jamKerja'));
+        return view('absensi.create', compact('cek', 'lokasi', 'jamKerja','absensiHariIni'));
     }
 
 
@@ -72,7 +74,6 @@ class AbsensiController extends Controller
         $karyawan = Auth::guard('karyawan')->user();
         $nik = $karyawan->nik;
         $tglAbsensi = date("Y-m-d");
-        $jam = date("H:i:s");
 
         $lokasiKantor = Cabang::find($karyawan->cabang_id);
         [$latitudeKantor, $longitudeKantor] = explode(",", $lokasiKantor->lokasi_kantor);
@@ -86,6 +87,7 @@ class AbsensiController extends Controller
         $jamKerja = JamsById::where('karyawan_id', $karyawan->id)
             ->join('jams', 'jams_by_ids.jam_id', '=', 'jams.id')
             ->where('hari', $namaHari)->first();
+        $jam = date("H:i:s");
 
         $cek = Absensi::where('tgl_absensi', $tglAbsensi)->where('karyawan_id', $karyawan->id)->count();
         $ket = ($cek > 0) ? "keluar" : "masuk";

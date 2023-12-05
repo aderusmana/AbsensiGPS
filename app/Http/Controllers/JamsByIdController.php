@@ -34,13 +34,13 @@ class JamsByIdController extends Controller
 
     public function updateJamById(Request $request)
     {
-        $idKaryawan = $request->id;
+        $id = $request->id;
         $hari = $request->hari;
         $jamId = $request->jam_id;
 
         for ($i = 0; $i < count($hari); $i++) {
             $data[] = [
-                'karyawan_id' => $idKaryawan,
+                'karyawan_id' => $id,
                 'jam_id' => $jamId[$i],
                 'hari' => $hari[$i],
                 'created_at' => now(),
@@ -49,7 +49,7 @@ class JamsByIdController extends Controller
         }
         DB::beginTransaction();
         try {
-            JamsById::where('karyawan_id', $idKaryawan)->delete();
+            JamsById::where('karyawan_id', $id)->delete();
             JamsById::insert($data);
             DB::commit();
             return redirect('/admin/karyawan')->with('success', 'Jam Kerja berhasil di Set');
