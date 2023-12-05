@@ -31,7 +31,7 @@
 
         <div class="login-form mt-1">
             <div class="section">
-                <img src="{{ asset('assets/img/sample/photo/logo-login.jpg') }}" alt="image" class="form-image">
+                <img src="{{ asset('/img/logo.png') }}" alt="image" class="form-image">
             </div>
 
             <div class="section mt-1">
@@ -73,7 +73,7 @@
                     </div>
 
                     <div class="form-button-group">
-                        <button type="submit" class="btn btn-primary btn-block btn-lg">Login</button>
+                        <button type="submit" class="btn btn-primary w-75 btn-lg">Login</button>
                     </div>
 
                 </form>

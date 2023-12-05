@@ -29,9 +29,9 @@
             <div class="row align-items-center g-4">
                 <div class="col-lg">
                     <div class="container-tight">
-                        <div class="text-center mb-4">
-                            <a href="." class="navbar-brand navbar-brand-autodark"><img
-                                    src="{{ asset('assetsAdmin') }}/static/logo.svg" height="36" alt=""></a>
+                        <div class="text-center">
+                            <a href="/admin/login" class="navbar-brand navbar-brand-autodark"><img
+                                    src="{{ asset('/img/logo.png')}}" height="200" alt=""></a>
                         </div>
                         <div class="card card-md">
                             <div class="card-body">

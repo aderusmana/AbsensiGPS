@@ -66,6 +66,7 @@ class KaryawanController extends Controller
     public function update(Request $request, $id)
     {
 
+        $karyawan = Karyawan::find($id);
         $nik = $request->nik;
         $oldAvatar = $request->old_avatar;
         if ($request->hasFile('avatar')) {
@@ -73,20 +74,7 @@ class KaryawanController extends Controller
         } else {
             $avatar = $oldAvatar;
         }
-        $password = $request->password;
-
-        if (!empty($password)) {
-            $data = [
-                'nik' => $request->nik,
-                'nama_lengkap' => $request->nama_lengkap,
-                'jabatan' => $request->jabatan,
-                'department_id' => $request->department_id,
-                'cabang_id' => $request->cabang_id,
-                'no_telp' => $request->no_telp,
-                'avatar' => $avatar,
-                'password' => Hash::make($request->password)
-            ];
-        } else {
+        $password = $request->password ? Hash::make($request->password) : $karyawan->password;
             $data = [
                 'nik' => $request->nik,
                 'nama_lengkap' => $request->nama_lengkap,
@@ -97,7 +85,7 @@ class KaryawanController extends Controller
                 'password' => $password,
                 'avatar' => $avatar,
             ];
-        }
+
         $updateData = Karyawan::findOrFail($id);
         $updateData->update($data);
 
